@@ -3,7 +3,9 @@
 Given a set of wavelength intensities and labeled fat and moisture content of chocolate, I aim to answer the question:
 Which spectrum intensity features correlate to high or low fat and moisture content in chocolate?
 
-![Wavelength intensities](outputs/mean_spectrum.png)
+<div align="center">
+  <img src="outputs/mean_spectrum.png" alt="Wavelength intensities" width="500" />
+</div>
 
 data source: https://www.kaggle.com/datasets/aswatik/choclate-quality-analysis-dataset
 
