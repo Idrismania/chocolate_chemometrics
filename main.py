@@ -25,7 +25,8 @@ def raw_to_spectrum_data(df: pd.DataFrame) -> pd.DataFrame:
 def plot_mean_std_distribution(df: pd.DataFrame) -> None:
     """
     Plots the mean intensity and standard deviation of all sample spectra,
-    given a data frame of wavelength intensities
+    given a data frame of wavelength intensities. Plot is saved to outputs
+    directory.
 
     Args:
         df: Raw spectrum dataframe obtained from raw_to_spectrum_data().
@@ -38,15 +39,24 @@ def plot_mean_std_distribution(df: pd.DataFrame) -> None:
     fig, ax = plt.subplots()
 
     # Plotting
-    ax.plot(df.columns, mean_spectrum, color="black", linewidth=1, label="Spectrum Mean")
-    ax.fill_between(df.columns, mean_spectrum - std_spectrum, mean_spectrum + std_spectrum, color='black', alpha=0.2, edgecolor=None, label="Spectrum Standard Deviation")
+    ax.plot(
+        df.columns, mean_spectrum,
+        color="black", linewidth=1, label="Spectrum Mean"
+        )
+    
+    ax.fill_between(
+        df.columns, mean_spectrum - std_spectrum, mean_spectrum + std_spectrum,
+        color='black', alpha=0.2, edgecolor=None, label="Spectrum Standard Deviation"
+        )
 
     # Annotating
-    ax.set_xlabel("Wavelength (nm)")
-    ax.set_ylabel("Intensity")
-    ax.legend(loc="upper left")
+    ax.set_xlabel("Wavelength (nm)", size=18)
+    ax.set_ylabel("Intensity", size=18)
+    ax.legend(loc="upper left", fontsize=12, frameon=False)
+    ax.tick_params(axis='both', labelsize=16)  # Change labelsize to your desired font size
 
-    plt.show()
+    plt.tight_layout()
+    plt.savefig(Path("outputs", "mean_spectrum.png"))
 
 
 
